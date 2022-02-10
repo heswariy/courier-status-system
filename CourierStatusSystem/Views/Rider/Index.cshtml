@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Rider>
+@* gets the path of the layout file and add the title "all custoners" to
+    the dymnamic dictionary collection known as the viewbag*@
+@{ Layout = "_Layout"; ViewBag.Title = "All Riders";}
+
+<h2>Riders</h2>
+<a asp-action="AddRider" class="btn btn-sm btn-primary">Add Rider</a>
+<a asp-action="GetRider" class="btn btn-sm btn-secondary">Get Rider</a>
+
+<table id="myTable" class="table table-sm table-striped table-bordered m-2 table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>E-mail</th>
+            <th>Telephone</th>
+            <th>Address</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var rider in Model)
+        {
+        <tr>
+            <td>@rider.riderId</td>
+            <td>@rider.riderName</td>
+            <td>@rider.riderEmail</td>
+            <td>@rider.riderContact</td>
+            <td>@rider.riderAddressLine1, @rider.riderAddressLine2, @rider.riderPostcode @rider.riderCity @rider.riderState</td>
+            <td>@rider.riderUsername</td>
+            <td>@rider.riderPassword</td>
+            <td>
+                <a asp-action="UpdateRider" asp-route-id="@rider.riderId">
+                    <img style="width:50px; height:50px" src="/icon/edit.png" />
+                </a>
+            </td>
+            <td>
+                <form asp-action="DeleteRider" method="post">
+                    <input type="hidden" value="@rider.riderId" name="riderId" />
+                    <input style="width:50px; height:50px" type="image" src="/icon/delete.png" />
+                </form>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

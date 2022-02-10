@@ -1,0 +1,82 @@
+﻿@model Rider
+@{ Layout = "_Layout"; ViewBag.Title = "Update a Rider";}
+
+<h2>Update a Rider <a asp-action="Index" class="btn btn-sm btn-secondary">Back</a></h2>
+<form method="post" asp-action="UpdateRider">
+    <div class="form-group">
+        <label asp-for="riderId"></label>
+        <input class="form-control" asp-for="riderId" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="riderName"></label>
+        <input class="form-control" asp-for="riderName" />
+    </div>
+    <div class="form-group">
+        <label asp-for="riderEmail"></label>
+        <input class="form-control" asp-for="riderEmail" />
+    </div>
+    <div class="form-group">
+        <label asp-for="riderContact"></label>
+        <input class="form-control" asp-for="riderContact" />
+    </div>
+    <div class="form-group">
+        <label asp-for="riderAddressLine1"></label>
+        <input class="form-control" asp-for="riderAddressLine1" />
+    </div>
+    <div class="form-group">
+        <label asp-for="riderAddressLine2"></label>
+        <input class="form-control" asp-for="riderAddressLine2" />
+    </div>
+    <div class="form-group">
+        <label asp-for="riderCity"></label>
+        <input class="form-control" asp-for="riderCity" />
+    </div>
+    <div class="form-group">
+        <label asp-for="riderPostcode"></label>
+        <input class="form-control" asp-for="riderPostcode" />
+    </div>
+    <div class="form-group">
+        <label asp-for="riderState"></label>
+        <input class="form-control" asp-for="riderState" />
+    </div>
+    <div class="form-group">
+        <label asp-for="riderUsername"></label>
+        <input class="form-control" asp-for="riderUsername" />
+    </div>
+    <div class="form-group">
+        <label asp-for="riderPassword"></label>
+        <input class="form-control" asp-for="riderPassword" />
+    </div>
+    <div class="text-center panel-body">
+        <button type="submit" class="btn btn-sm btn-primary">Update Rider</button>
+    </div>
+</form>
+
+@if (ViewBag.Result == "Success")
+{
+    <h2>Rider</h2>
+    <table class="table table-sm table-striped table-bordered m-2">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Address</th>
+                <th>Username</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.riderId</td>
+                <td>@Model.riderName</td>
+                <td>@Model.riderEmail</td>
+                <td>@Model.riderContact</td>
+                <td>@Model.riderAddressLine1, <br /> @Model.riderAddressLine2, <br /> @Model.riderPostcode @Model.riderCity, @Model.riderState</td>
+                <td>@Model.riderUsername</td>
+                <td>@Model.riderPassword</td>
+            </tr>
+        </tbody>
+    </table>
+}

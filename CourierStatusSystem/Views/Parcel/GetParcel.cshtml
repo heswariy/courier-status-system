@@ -1,0 +1,46 @@
+﻿@model Parcel
+@{ Layout = "_Layout"; ViewBag.Title = "Get Parcel by Tracking Number";}
+
+<h2>Get Parcel by Tracking Number <a asp-action="Index" class="btn btn-sm btn-primary">Back</a></h2>
+<form method="post">
+    <div class="form-group">
+        <label for="trackingNum">Tracking Number:</label>
+        <input class="form-control" name="trackingNum" />
+    </div>
+    <div class="text-center panel-body">
+        <button type="submit" class="btn btn-sm btn-primary">Get Parcel</button>
+    </div>
+</form>
+
+@if (Model != null && !Model.trackingNum.Equals(""))
+{
+    <h2>Login</h2>
+    <table id="myTable" class="table table-sm table-striped table-bordered m-2 table-hover">
+        <thead>
+            <tr>
+                <th>Tracking No.</th>
+                <th>Status</th>
+                <th>Sender Detail</th>
+                <th>Sender Address</th>
+                <th>Recipient Details</th>
+                <th>Recipient Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.trackingNum</td>
+                <td>@Model.parcelStatus</td>
+                <td>@Model.senderName <br /> @Model.senderEmail <br /> @Model.senderContact <br /> @Model.senderAltContact</td>
+                <td>@Model.senderAddressLine1, <br /> @Model.senderAddressLine2, <br /> @Model.senderPostcode @Model.senderCity, @Model.senderState</td>
+                <td>@Model.recipientName <br /> @Model.recipientEmail <br /> @Model.recipientContact <br /> @Model.recipientAltContact</td>
+                <td>@Model.recipientAddressLine1, <br /> @Model.recipientAddressLine2, <br /> @Model.recipientPostcode @Model.recipientCity, @Model.recipientState</td>
+            </tr>
+        </tbody>
+    </table>
+}
+else if (Model != null && Model.trackingNum.Equals(" "))
+{
+    <div class="text-center">
+        <h1>The parcel with the searched Tracking Number does not exist!!</h1>
+    </div>
+}

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Login>
+
+@{Layout = "_Layout"; ViewBag.Title = "All Login";}
+
+<h2>Login</h2>
+<a asp-action="GetLogin" class="btn btn-sm btn-secondary">Get Customer</a>
+
+<table id="myTable" class="table table-sm table-striped table-bordered m-2 table-hover">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var login in Model)
+        {
+        <tr>
+            <td>@login.Username</td>
+            <td>@login.Password</td>
+            <td>
+                <a asp-action="UpdateLogin" asp-route-id="@login.Username">
+                    <img style="width:50px; height:50px" src="/icon/edit.png" />
+                </a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+

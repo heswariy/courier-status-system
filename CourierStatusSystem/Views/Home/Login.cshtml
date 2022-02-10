@@ -1,0 +1,63 @@
+﻿@model CourierStatusSystem.Models.Login
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+
+    <!--===============================================================================================-->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body>
+
+    <div class="sidenav" style="background-color: #0600a8;">
+        <div class="login-main-text">
+            <h2>GDEX</h2>
+        </div>
+    </div>
+    <div class="main">
+        <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+                <form asp-action="Login" method="post">
+                    @if (ViewBag.Status == "CORRECT Username and Password")
+                    {
+                        <div class="alert alert-success" role="alert">
+                            @ViewBag.Status                          
+                        </div>
+                    }
+                    else if (ViewBag.Status == "INCORRECT Username or Password")
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @ViewBag.Status
+                        </div>
+                    }
+
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input asp-for="Username" type="text" class="form-control" placeholder="Username">
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input asp-for="Password" type="password" class="form-control" placeholder="Password">
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-black" style="background-color: #0600a8;">Login</button>
+                    @*<a asp-action="/Parcel" class="btn btn-black">Login</a>*@
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+﻿@model Login
+@{ Layout = "_Layout"; ViewBag.Title = "Update a Login";}
+
+<h2>Update a Login <a asp-action="Index" class="btn btn-sm btn-secondary">Back</a></h2>
+<form method="post" asp-action="UpdateLogin">
+    <div class="text-danger" asp-validation-summary="All"></div>
+    <div class="form-group">
+        <label asp-for="Username"></label>
+        <input class="form-control" asp-for="Username" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input class="form-control" asp-for="Password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="text-center panel-body">
+        <button type="submit" class="btn btn-sm btn-primary">Update Login</button>
+    </div>
+</form>
+
+@if (ViewBag.Result == "Success")
+{
+    <h2>Login</h2>
+    <table class="table table-sm table-striped table-bordered m-2">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Password</th>              
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Username</td>
+                <td>@Model.Password</td>
+            </tr>
+        </tbody>
+    </table>
+}

@@ -1,0 +1,38 @@
+﻿@model Login
+@{ Layout = "_Layout"; ViewBag.Title = "Get Login by Username";}
+
+<h2>Get Login by Username <a asp-action="Index" class="btn btn-sm btn-primary">Back</a></h2>
+<form method="post">
+    <div class="form-group">
+        <label for="Username">Username:</label>
+        <input class="form-control" name="Username" />
+    </div>
+    <div class="text-center panel-body">
+        <button type="submit" class="btn btn-sm btn-primary">Get Login</button>
+    </div>
+</form>
+
+@if (Model != null && !Model.Username.Equals(""))
+{
+    <h2>Login</h2>
+    <table id="myTable" class="table table-sm table-striped table-bordered m-2 table-hover">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Username</td>
+                <td>@Model.Password</td>
+            </tr>
+        </tbody>
+    </table>
+}
+else if (Model != null && Model.Username.Equals(" "))
+{
+    <div class="text-center">
+        <h1>The login with the searched username does not exist!!</h1>
+    </div>
+}

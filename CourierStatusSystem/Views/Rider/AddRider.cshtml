@@ -1,0 +1,98 @@
+﻿@model Rider
+@{ Layout = "_Layout"; ViewBag.Title = "Add a Rider";}
+
+<h2>Add a Rider <a asp-action="Index" class="btn btn-sm btn-secondary">Back</a></h2>
+
+<form asp-action="AddRider">
+
+    <div class="form-group">
+        <label asp-for="riderName">Name:</label>
+        <input asp-for="riderName" class="form-control" />
+        <span asp-validation-for="riderName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="riderEmail">Email:</label>
+        <input asp-for="riderEmail" class="form-control" />
+        <span asp-validation-for="riderEmail" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="riderContact">Phone:</label>
+        <input asp-for="riderContact" class="form-control" />
+        <span asp-validation-for="riderContact" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="riderAddressLine1">Address:</label>
+        <input asp-for="riderAddressLine1" class="form-control" />        
+    </div>
+    <div class="form-group">
+        <input asp-for="riderAddressLine2" class="form-control" />
+        <span asp-validation-for="riderAddressLine1" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="riderCity">City:</label>
+        <input asp-for="riderCity" class="form-control" />
+        <span asp-validation-for="riderCity" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="riderPostcode">Postcode:</label>
+        <input asp-for="riderPostcode" class="form-control" />
+        <span asp-validation-for="riderPostcode" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="riderState">State:</label>
+        <input asp-for="riderState" class="form-control" />
+        <span asp-validation-for="riderState" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="riderUsername">Username:</label>
+        <input asp-for="riderUsername" class="form-control" />
+        <span asp-validation-for="riderUsername" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="riderPassword">Password:</label>
+        <input asp-for="riderPassword" class="form-control" />
+        <span asp-validation-for="riderPassword" class="text-danger"></span>
+    </div>
+
+    <div class="text-center panel-body">
+        <button type="submit" class="btn btn-sm btn-primary">Add Rider</button>
+    </div>
+</form>
+<br />
+<br />
+<form asp-action="AddRider" method="get">
+    <div class="text-center panel-body">
+        <button type="submit" class="btn btn-sm btn-primary" align="right">Clear Form</button>
+    </div>
+</form>
+
+
+@if (Model != null)
+{
+    <h2>Rider</h2>
+
+    <table class="table table-sm table-striped table-bordered m-2">
+        <thead>
+            <tr colspan="2">
+                <th>Name</th>
+                <th>E-mail</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Username</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.riderName</td>
+                <td>@Model.riderEmail</td>
+                <td>@Model.riderContact</td>
+                <td>@Model.riderAddressLine1, @Model.riderAddressLine2, @Model.riderPostcode @Model.riderCity @Model.riderState</td>
+                <td>@Model.riderUsername</td>
+                <td>@Model.riderPassword</td>
+
+            </tr>
+        </tbody>
+    </table>
+    @*<div class="alert-info">Rider Added!!</div>*@
+}

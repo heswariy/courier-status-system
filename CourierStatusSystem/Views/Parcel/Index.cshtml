@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Parcel>
+
+@{Layout = "_Layout"; ViewBag.Title = "All Parcels";}
+
+<h2>Parcel</h2>
+<a asp-action="GetParcel" class="btn btn-sm btn-secondary">Get Parcel</a>
+
+<table id="myTable" class="table table-sm table-striped table-bordered m-2 table-hover">
+    <thead>
+        <tr>
+            <th>Tracking #</th>
+            <th>Status</th>
+            <th>Sender Detail</th>
+            <th>Sender Address</th>
+            <th>Recipient Details</th>
+            <th>Recipient Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var parcel in Model)
+        {
+        <tr>
+            <td>@parcel.trackingNum</td>
+            <td>@parcel.parcelStatus</td>
+            <td>@parcel.senderName <br /> @parcel.senderEmail <br /> @parcel.senderContact <br /> @parcel.senderAltContact</td>
+            <td>@parcel.senderAddressLine1, <br /> @parcel.senderAddressLine2, <br /> @parcel.senderPostcode @parcel.senderCity, @parcel.senderState</td>
+            <td>@parcel.recipientName <br /> @parcel.recipientEmail <br /> @parcel.recipientContact <br /> @parcel.recipientAltContact</td>
+            <td>@parcel.recipientAddressLine1, <br /> @parcel.recipientAddressLine2, <br /> @parcel.recipientPostcode @parcel.recipientCity, @parcel.recipientState</td>
+        </tr>
+        }
+    </tbody>
+</table>
+

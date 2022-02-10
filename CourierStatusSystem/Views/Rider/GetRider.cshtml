@@ -1,0 +1,48 @@
+﻿@model Rider
+@{ Layout = "_Layout"; ViewBag.Title = "Get Rider by Id";}
+
+<h2>Get Rider by Id <a asp-action="Index" class="btn btn-sm btn-primary">Back</a></h2>
+<form method="post">
+    <div class="form-group">
+        <label for="riderId">Id:</label>
+        <input class="form-control" name="riderId" />
+    </div>
+    <div class="text-center panel-body">
+        <button type="submit" class="btn btn-sm btn-primary">Get Rider</button>
+    </div>
+</form>
+
+@if (Model != null && Model.riderId != 0)
+{
+    <h2>Rider</h2>
+    <table id="myTable" class="table table-sm table-striped table-bordered m-2 table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>E-mail</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Username</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.riderId</td>
+                <td>@Model.riderName</td>
+                <td>@Model.riderEmail</td>
+                <td>@Model.riderContact</td>
+                <td>@Model.riderAddressLine1 @Model.riderAddressLine2 @Model.riderCity @Model.riderPostcode @Model.riderState</td>
+                <td>@Model.riderUsername</td>
+                <td>@Model.riderPassword</td>
+            </tr>
+        </tbody>
+    </table>
+}
+else if (Model != null && Model.riderId == 0)
+{
+    <div class="text-center">
+        <h1>The rider with the searched Id does not exist!!</h1>
+    </div>
+}
